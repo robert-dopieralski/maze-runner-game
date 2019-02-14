@@ -17,7 +17,25 @@ renderMap()
 window.addEventListener('keyup', function (event) {
     let key = event.key
     move(key)
+    console.log(gameBoard.parentElement)
 })
+
+function restartGame(){
+    let drop = gameBoard.parentElement
+    drop.removeChild(gameBoard)
+    gameBoard = document.createElement('div')
+    gameBoard.classList.add('gameBoard')
+    drop.appendChild(gameBoard)
+    renderMap()
+}
+
+function checkIfTreasure(xxx) {
+    if (xxx.classList.contains('treasureNode')) {
+        xxx.classList.remove('treasureNode')
+        alert('You have WON, next maps are not ready Yet :( Feel free to play again')
+        restartGame()
+    }
+}
 
 function move(x) {
     let player = document.querySelector('.playerNode')
@@ -32,6 +50,7 @@ function move(x) {
         else {
             player.classList.remove('playerNode')
             previousNode.classList.add('playerNode')
+            checkIfTreasure(previousNode)
         }
     }
     if (x === "d") {
@@ -42,6 +61,7 @@ function move(x) {
         else {
             player.classList.remove('playerNode')
             nextNode.classList.add('playerNode')
+            checkIfTreasure(nextNode)
         }
     }
     if (x === "w") {
@@ -52,6 +72,7 @@ function move(x) {
         else {
             player.classList.remove('playerNode')
             aboveNode.classList.add('playerNode')
+            checkIfTreasure(aboveNode)
         }
     }
     if (x === "s") {
@@ -62,10 +83,10 @@ function move(x) {
         else {
             player.classList.remove('playerNode')
             belowNode.classList.add('playerNode')
+            checkIfTreasure(belowNode)
         }
     }
 }
-
 
 function renderMap() {
     for (i = 0; i < maze.length; i++) {
