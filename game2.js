@@ -14,12 +14,58 @@ const maze = [
 
 //launcher
 renderMap()
-window.addEventListener('keyup', move(event))
+window.addEventListener('keyup', function (event) {
+    let key = event.key
+    move(key)
+})
 
-function move(event) {
-    console.log(event.code)
-
+function move(x) {
+    let player = document.querySelector('.playerNode')
+    let currentRow = Array.from(player.parentElement.childNodes)
+    let plIndex = currentRow.indexOf(player)
+    console.log(plIndex)
+    if (x === "a") {
+        let previousNode = player.previousElementSibling
+        if (previousNode.classList.contains('wallNode')) {
+            //do nothing :D
+        }
+        else {
+            player.classList.remove('playerNode')
+            previousNode.classList.add('playerNode')
+        }
+    }
+    if (x === "d") {
+        let nextNode = player.nextElementSibling
+        if (nextNode.classList.contains('wallNode')) {
+            //do nothing :D
+        }
+        else {
+            player.classList.remove('playerNode')
+            nextNode.classList.add('playerNode')
+        }
+    }
+    if (x === "w") {
+        let aboveNode = player.parentElement.previousElementSibling.childNodes[plIndex]
+        if (aboveNode.classList.contains('wallNode')) {
+            //do nothing :D
+        }
+        else {
+            player.classList.remove('playerNode')
+            aboveNode.classList.add('playerNode')
+        }
+    }
+    if (x === "s") {
+        let belowNode = player.parentElement.nextElementSibling.childNodes[plIndex]
+        if (belowNode.classList.contains('wallNode')) {
+            //do nothing :D
+        }
+        else {
+            player.classList.remove('playerNode')
+            belowNode.classList.add('playerNode')
+        }
+    }
 }
+
 
 function renderMap() {
     for (i = 0; i < maze.length; i++) {
