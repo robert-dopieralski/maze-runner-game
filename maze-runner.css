@@ -1,10 +1,19 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
 .gameBoard {
+    padding: 20px;
+    border: 5px inset gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.rowNode {
     margin: 0 auto;
-    border: 2px inset gray;
     display: flex;
     flex-wrap: wrap;
-    max-width: 370px;
-    height: 600px;
 }
 
 .mapNode {
@@ -18,14 +27,14 @@
     background-color: black;
 }
 
+.pathNode {
+    background-color: green;
+}
+
 .treasureNode {
     background-color: gold;
 }
 
 .playerNode {
     background-color: blue;
-}
-
-.pathNode {
-    background-color: green;
 }

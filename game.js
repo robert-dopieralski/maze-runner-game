@@ -1,6 +1,8 @@
 let gameBoard = document.querySelector('.gameBoard')
-let level = 1
+// let level = 1
 let levelMap
+
+
 
 render()
 
@@ -33,14 +35,15 @@ function mapToBricks() {
             rowNode.classList.add('rowNode')
         }
         rowNode.appendChild(mapNode)
+        gameBoard.appendChild(rowNode)
     }
     //levelMap.forEach(brick =>{})
 }
 
-function downloadMap() {
-    let currentMap = "map" + level
-    fetch(currentMap + '.txt').then(map => map.text()).then(map => {
-        levelMap = map.split('')
-        level++
-    }).then(mapToBricks)
-}
+// function downloadMap() {
+//     let currentMap = "map" + level
+//     fetch(currentMap + '.txt').then(map => map.text()).then(map => {
+//         levelMap = map.split('')
+//         level++
+//     }).then(mapToBricks)
+// }
