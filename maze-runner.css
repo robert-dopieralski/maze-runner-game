@@ -1,0 +1,31 @@
+.gameBoard {
+    margin: 0 auto;
+    border: 2px inset gray;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 370px;
+    height: 600px;
+}
+
+.mapNode {
+    margin: 0px;
+    padding: 0px;
+    width: 40px;
+    height: 40px;
+}
+
+.wallNode {
+    background-color: black;
+}
+
+.treasureNode {
+    background-color: gold;
+}
+
+.playerNode {
+    background-color: blue;
+}
+
+.pathNode {
+    background-color: green;
+}
