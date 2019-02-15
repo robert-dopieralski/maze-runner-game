@@ -133,4 +133,3 @@ function renderMap(title) {
         gameBoard.appendChild(row)
     }
 }
-
