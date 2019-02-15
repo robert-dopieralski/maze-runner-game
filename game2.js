@@ -1,6 +1,7 @@
 let gameBoard = document.querySelector('.gameBoard')
-
-const maze = [
+////////////////////////
+//map section
+const maze1 = [
     '#########',
     '#.....#.#',
     '#.###..T#',
@@ -12,21 +13,33 @@ const maze = [
     '#########',
 ]
 
+const maze2 = [
+    '#######################',
+    '#....................T#',
+    '#.#.#.#.#.#############',
+    '#..####################',
+    '#.#..................P#',
+    '#...###################',
+    '#######################'
+]
+//end of map section
+////////////////////////
+
 //launcher
-renderMap()
+renderMap(maze1)
 window.addEventListener('keyup', function (event) {
     let key = event.key
     move(key)
     console.log(gameBoard.parentElement)
 })
 
-function restartGame(){
+function restartGame() {
     let drop = gameBoard.parentElement
     drop.removeChild(gameBoard)
     gameBoard = document.createElement('div')
     gameBoard.classList.add('gameBoard')
     drop.appendChild(gameBoard)
-    renderMap()
+    renderMap(maze2)
 }
 
 function checkIfTreasure(xxx) {
@@ -88,9 +101,10 @@ function move(x) {
     }
 }
 
-function renderMap() {
-    for (i = 0; i < maze.length; i++) {
-        let a = maze[i].slice('')
+function renderMap(title) {
+    let thing = title
+    for (i = 0; i < thing.length; i++) {
+        let a = thing[i].slice('')
         let row = document.createElement('div')
         row.classList.add('rowNode')
         for (j = 0; j < a.length; j++) {
@@ -119,3 +133,4 @@ function renderMap() {
         gameBoard.appendChild(row)
     }
 }
+
